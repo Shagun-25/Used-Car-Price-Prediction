@@ -1,0 +1,119 @@
+<!-- This file displays the front-end of the application. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+
+    <!-- The style tag contains the entire formatting elements of the application. -->
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label,
+        select,
+        input {
+            display: block;
+            margin: 10px auto;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<!-- The body tag displays the form contents. -->
+
+<body>
+    <h1>Car Price Prediction</h1>
+    <form action="/predict" method="post">
+
+        <label for="brand">Brand:</label>
+        <select name="brand" id="brand">
+            <option value="audi">Audi</option>
+            <option value="bmw">BMW</option>
+            <option value="ford">Ford</option>
+            <option value="hyundi">Hyundai</option>
+            <option value="merc">Mercedes</option>
+            <option value="skoda">Skoda</option>
+            <option value="toyota">Toyota</option>
+            <option value="vauxhall">Vauxhall</option>
+            <option value="vw">VW</option>
+        </select>
+
+        <label for="transmission">Transmission:</label>
+        <select name="transmission" id="transmission">
+            <option value="Semi-Auto">Semi-Auto</option>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="fuelType">Fuel Type:</label>
+        <select name="fuelType" id="fuelType">
+            <option value="Diesel">Diesel</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Other">Other</option>
+            <option value="Electric">Electric</option>
+        </select>
+
+        <label for="mileage">Mileage (in miles per gallon):</label>
+        <input type="text" name="mileage" id="mileage" required>
+
+        <label for="engineSize">Engine Size (in litres):</label>
+        <input type="text" name="engineSize" id="engineSize" required>
+
+        <label for="year">Year:</label>
+        <input type="text" name="year" id="year" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+    <h2>Predicted Car Price: ${{ prediction.0 }}</h2>
+    {% endif %}
+</body>
+
+</html>
